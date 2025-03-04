@@ -6,5 +6,5 @@ public interface AppRepo {
     int deleteUser(int userId);
     //String updateUser(AppUser usr, List<String> userAttributes); // сущность обновленного пользователя и список атрибутов, которые надо обновить 
     List<AppUser> showAllUsers();
-    AppUser findUser(String userName);
+    List<AppUser> findUser(String userName);
 }
