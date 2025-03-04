@@ -6,8 +6,7 @@ public class AppUser {
     public String userPassword;
     public int userRoleId; // role_id
 
-    public AppUser (int id, String userName, String userPassword, int userRoleId) {
-        this.id = id;
+    public AppUser (String userName, String userPassword, int userRoleId) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userRoleId = userRoleId;

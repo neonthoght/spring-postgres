@@ -15,7 +15,7 @@ public class AppRepoImpl implements AppRepo {
     private JdbcTemplate jt;
 
     @Override
-    public int createUser(AppUser usr) { 
+    public int createUser(AppUser usr) {
 
         return jt.update("INSERT INTO test_spring.users (title, description, published) VALUES(?,?,?)",
         new Object[] { usr.getUserName(), usr.getUserPassword(), usr.getUserRoleId() });

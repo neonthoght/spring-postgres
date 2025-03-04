@@ -25,6 +25,16 @@ public class UserController {
     @Autowired
     AppRepo appRepo;
 
+    @PostMapping("/tutorials")
+    public ResponseEntity<String> createTutorial(@RequestBody AppUser appUser) {
+    try {
+            appRepo.createUser(new AppUser(appUser.getUserName(), appUser.getUserPassword(), appUser.getUserRoleId()));
+            return new ResponseEntity<>("Tutorial was created successfully.", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/userlist")
     public ResponseEntity<List<AppUser>> getAllUsers(@RequestParam(required = false) String userName) {
 
