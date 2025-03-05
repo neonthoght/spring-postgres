@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
 
 import my.spring.postgres.spring_postgres.AppUser;
 import my.spring.postgres.spring_postgres.AppRepo;
@@ -25,11 +26,24 @@ public class UserController {
     @Autowired
     AppRepo appRepo;
 
-    @PostMapping("/tutorials")
+    @GetMapping (path="/timeclock")
+    public ResponseEntity<String> timeclock() {
+
+        return new ResponseEntity<>("2025-03-05", HttpStatus.OK);
+    }
+
+    @PostMapping (path="/timeclock")
+    public ResponseEntity<String> timeclockP() {
+
+        return new ResponseEntity<>("2025-03-05", HttpStatus.OK);
+    }
+
+    //@PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, path = "/user", produces = "application/json")
+    @PostMapping(path = "/user", produces = "application/json")
     public ResponseEntity<String> createTutorial(@RequestBody AppUser appUser) {
     try {
             appRepo.createUser(new AppUser(appUser.getUserName(), appUser.getUserPassword(), appUser.getUserRoleId()));
-            return new ResponseEntity<>("Tutorial was created successfully.", HttpStatus.CREATED);
+            return new ResponseEntity<>("User created succefully", HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

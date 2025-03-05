@@ -1,7 +1,7 @@
 package my.spring.postgres.spring_postgres;
 
 public class AppUser {
-    public int id; // user_id
+    //public int id; // user_id
     public String userName; // user_name
     public String userPassword;
     public int userRoleId; // role_id
@@ -12,12 +12,14 @@ public class AppUser {
         this.userRoleId = userRoleId;
     }
 
+    /*
     public void setId( int id) {
         this.id = id;
     } 
     public int getId() {
         return this.id;
-    } 
+    }
+    */
 
     public void setUserName( String userName) {
         this.userName = userName;
