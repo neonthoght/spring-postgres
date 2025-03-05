@@ -49,6 +49,7 @@ public class UserController {
         }
     }
 
+    /*
     @GetMapping("/userlist")
     public ResponseEntity<List<AppUser>> getAllUsers(@RequestParam(required = false) String userName) {
 
@@ -67,6 +68,21 @@ public class UserController {
             return new ResponseEntity<>(userList, HttpStatus.OK);
 
         } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    */
+
+    @GetMapping("/userlist")
+    public ResponseEntity<List<AppUser>> getAllUsers(@RequestParam(required = false) String userName) {
+
+        try {
+            List<AppUser> userList = new ArrayList<AppUser>();
+            appRepo.showAllUsers().forEach(userList::add);
+            return new ResponseEntity<>(userList, HttpStatus.OK);
+
+        } catch (Exception e) {
+            System.out.println(e);
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
